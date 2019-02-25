@@ -1,5 +1,10 @@
 # BMD (Binary Matrix Decomposition)
-Efficient Computation of Quantized Neural Networks by {−1,+1} Encoding Decomposition
+## Motivations
+
+This subrepository demonstrates the binary matrix decomposition described in the article:  
+[Efficient Computation of Quantized Neural Networks by {− 1,+ 1} Encoding Decomposition.](https://openreview.net/pdf?id=rylfIYoucQ)
+
+##  Matrix multiplication
 
 <p><code>run: nvcc BMD-2-2bit.cu -std=c++11 -lcublas && ./a.out </code></p>
 
