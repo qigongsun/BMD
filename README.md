@@ -17,5 +17,7 @@ We implement the multiplication of two matrixes via our {-1, +1} encoding scheme
 * Nvidia GPU
 
 ## Reference
-[BinaryNet](https://github.com/MatthieuCourbariaux/BinaryNet)
+
 [BinaryNet: Training Deep Neural Networks with Weights and Activations Constrained to +1 or -1.](http://arxiv.org/abs/1602.02830)
+
+Code: [BinaryNet](https://github.com/MatthieuCourbariaux/BinaryNet)
