@@ -3,7 +3,7 @@
 #include <chrono>
 #include <cublas_v2.h>
 using namespace std;
-// to run: nvcc benchmark-cublas.cu -std=c++11 -lcublas && ./a.out
+
 double res;
 double fres;
 int main() {
@@ -85,7 +85,6 @@ int main() {
 
 		dim3 blockDim(16, 16);
 		dim3 gridDim(M / 16 + 1, K / 16 + 1);
-		//xnor_gemm<<<gridDim, blockDim>>>(Aconc, Bconc, fC, M, N / 32, K);
 		xnor_add_gemm<<<gridDim, blockDim>>>(Aconc1, Aconc2, Bconc1, Bconc2, fC, M, N / 32, K);
 		cudaDeviceSynchronize();
 
@@ -117,27 +116,6 @@ int main() {
 	};
 	float* result_gemm = test_gemm();
 
-/*
-	auto test_cublas = [&]() {
-		cudaMemset(fC, 0, N * N * sizeof(int));
-		cublasHandle_t handle;
-		cublasCreate(&handle);
-
-		auto start = chrono::high_resolution_clock::now();
-		float alpha = 1.0, beta = 0.0;
-		// cublas use column-major
-		cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, N, N, &alpha, fB, N, fA, N, &beta, fC, N);
-		cudaDeviceSynchronize();
-		auto end = chrono::high_resolution_clock::now();
-		chrono::duration<double> diff = end - start;
-		cout << "cublas time: " << diff.count() << " s\n";
-
-		float* result = (float*)malloc(N * N * sizeof(float));
-		cudaMemcpy(result, fC, N * N * sizeof(float), cudaMemcpyDeviceToHost);
-		return result;
-	};
-	float* result_cublas = test_cublas();
-*/
 	auto check_result = [&](float* p1, float* p2) {
 		for (int i = 0; i < N * N; i ++) {
 			float diff = p1[i] - p2[i];
@@ -151,6 +129,4 @@ int main() {
 	double p=fres/res;
 	cout << "times: " << p<< " \n";
 	printf("success: %d\n", check_result(result_gemm, result_xnor));
-	//printf("success: %d\n", check_result(result_gemm, result_cublas));
-
 }
