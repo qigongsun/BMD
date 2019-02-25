@@ -15,6 +15,7 @@ We implement the multiplication of two matrixes via our {-1, +1} encoding scheme
 
 ## Requirements 
 * Nvidia GPU
+* CUDA
 
 ## Reference
 
