@@ -3,7 +3,6 @@
 #include <chrono>
 #include <cublas_v2.h>
 using namespace std;
-
 double res;
 double fres;
 int main() {
@@ -85,6 +84,7 @@ int main() {
 
 		dim3 blockDim(16, 16);
 		dim3 gridDim(M / 16 + 1, K / 16 + 1);
+		//xnor_gemm<<<gridDim, blockDim>>>(Aconc, Bconc, fC, M, N / 32, K);
 		xnor_add_gemm<<<gridDim, blockDim>>>(Aconc1, Aconc2, Bconc1, Bconc2, fC, M, N / 32, K);
 		cudaDeviceSynchronize();
 
@@ -115,6 +115,7 @@ int main() {
 		return result;
 	};
 	float* result_gemm = test_gemm();
+
 
 	auto check_result = [&](float* p1, float* p2) {
 		for (int i = 0; i < N * N; i ++) {
