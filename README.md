@@ -5,7 +5,7 @@ This subrepository demonstrates the binary matrix decomposition described in the
 [Efficient Computation of Quantized Neural Networks by {− 1,+ 1} Encoding Decomposition.](https://openreview.net/pdf?id=rylfIYoucQ)
 
 ##  Matrix multiplication
-run: 
+* run: 
 <p><code>nvcc BMD-2-2bit.cu -std=c++11 -lcublas && ./a.out </code></p>
 
 This benchmark performs 8192x8192x8192 matrix multiplications with our method and baseline kernel.
