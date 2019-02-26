@@ -2,7 +2,7 @@
 ## Motivations
 
 This subrepository demonstrates the binary matrix decomposition described in the article:  
-[Efficient Computation of Quantized Neural Networks by {− 1,+ 1} Encoding Decomposition.](https://openreview.net/pdf?id=rylfIYoucQ)
+[AAAI-19: Multi-Precision Quantized Neural Networks via Encoding Decomposition of {-1,+1}.](https://www.aaai.org/Papers/AAAI/2019/AAAI-SunQ.7182.pdf)
 
 ##  Matrix multiplication
 * run: 
