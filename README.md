@@ -5,8 +5,8 @@ This subrepository demonstrates the binary matrix decomposition described in the
 [Efficient Computation of Quantized Neural Networks by {− 1,+ 1} Encoding Decomposition.](https://openreview.net/pdf?id=rylfIYoucQ)
 
 ##  Matrix multiplication
-
-<p><code>run: nvcc BMD-2-2bit.cu -std=c++11 -lcublas && ./a.out </code></p>
+run: 
+<p><code>nvcc BMD-2-2bit.cu -std=c++11 -lcublas && ./a.out </code></p>
 
 This benchmark performs 8192x8192x8192 matrix multiplications with our method and baseline kernel.
 We implement the multiplication of two matrixes via our {-1, +1} encoding scheme on GTX 1080 GPU. 
